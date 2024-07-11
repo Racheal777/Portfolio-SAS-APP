@@ -38,10 +38,12 @@ export const addEducation = async (req, res) => {
 
 
 
-export const getAllEducation = async (req, res) => {
+export const getAllUserEducation = async (req, res) => {
 
     try {
-        const alleducation = await Education.find()
+        //we are fetching education that belongs to a particular user
+        const userId = req.params.id
+        const alleducation = await Education.find({user: userId})
     if(alleducation.length == 0){
         return res.status(404).send('No education added')
     }

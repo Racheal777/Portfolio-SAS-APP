@@ -1,4 +1,4 @@
-import { Education } from "../models/education_model.js";
+
 import { User } from "../models/user_model.js";
 import { userSchema } from "../schema/user_schema.js";
 import bcrypt from "bcrypt"
