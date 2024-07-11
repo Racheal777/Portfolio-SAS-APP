@@ -1,5 +1,6 @@
 
 import mongoose from 'mongoose'
+import 'dotenv/config'
 
 const mongo_uri = process.env.connectionString
 
