@@ -1,4 +1,5 @@
 import { Education } from "../models/education_model.js";
+import { User } from "../models/user_model.js";
 import { educationSchema } from "../schema/user_schema.js";
 
 export const addEducation = async (req, res) => {
@@ -8,9 +9,23 @@ export const addEducation = async (req, res) => {
     if(error){
         return res.status(400).send(error.details[0].message)
     }
-    console.log('value', value)
-
+    
+    //create education with the value
     const education = await Education.create(value)
+
+    //after, find the user with the id that you passed when creating the education 
+    const user = await User.findById(value.user);
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    //if you find the user, push the education id you just created inside
+    user.education.push(education._id);
+    
+    //and save the user now with the educationId
+    await user.save();
+
+    //return the education
     res.status(201).json({education})
 
    } catch (error) {
