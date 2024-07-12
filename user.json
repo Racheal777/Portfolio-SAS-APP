@@ -1,0 +1,58 @@
+{
+    "user": {
+      "_id": "668fe9282896a1435c306fe5",
+      "firstName": "Racheal",
+      "lastName": "Kuranchie",
+      "email": "Kuranchieracheal@gmail.com",
+      "termsAndConditions": true,
+      "__v": 3,
+      "education": [
+        {
+          "_id": "668ff67549c113511a3a96fc",
+          "schoolName": "University of Whales",
+          "location": "123 Main St, Cityville",
+          "program": "Computer Science",
+          "qualification": "Bachelor's Degree",
+          "grade": "Distinction",
+          "startDate": "2022-09-09",
+          "user": "668fe9282896a1435c306fe5",
+          "__v": 0
+        },
+        {
+          "_id": "668ff6b249c113511a3a9700",
+          "schoolName": "University of Cincinati",
+          "location": "123 Main St, Cityville",
+          "program": "Computer Science",
+          "qualification": "Bachelor's Degree",
+          "grade": "Distinction",
+          "startDate": "2022-09-09",
+          "user": "668fe9282896a1435c306fe5",
+          "__v": 0
+        }
+      ],
+      "achievements": [],
+      "experiences": [],
+      "projects": [],
+      "skills": [],
+      "userProfile": {
+        "_id": "66914606866aab1589fc08a2",
+        "profilePicture": "https://example.com/images/profile.jpg",
+        "location": "New York, USA",
+        "maritalStatus": "single",
+        "sex": "male",
+        "bio": "Passionate software developer with 5 years of experience in web development.",
+        "about": "I specialize in building full-stack web applications using modern technologies. I love learning new programming languages and frameworks.",
+        "dateOfBirth": "1990-05-15T00:00:00.000Z",
+        "contact": "+1234567890",
+        "resume": "https://example.com/resume.pdf",
+        "languages": [
+          "English",
+          "Spanish",
+          "French"
+        ],
+        "user": "668fe9282896a1435c306fe5",
+        "__v": 0
+      },
+      "volunteering": []
+    }
+  }

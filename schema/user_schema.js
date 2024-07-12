@@ -8,7 +8,7 @@ export const userSchema = joi.object({
         email: joi.string().email().required(),
         password: joi.string().min(4).required(),
         confirmedPassword: joi.ref('password'),
-        userName: joi.string(),
+        userName: joi.string().required(),
         termsAndConditions: joi.boolean(),
 
     })  .with('password', 'confirmedPassword');
@@ -42,7 +42,7 @@ export const educationSchema = joi.object({
         grade: joi.string(),
         startDate: joi.string().required(),
         endDate: joi.string(),
-        user: joi.string().required()
+        user: joi.string()
       })
  
       export const experienceSchema = joi.object({
