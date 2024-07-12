@@ -12,5 +12,5 @@ userRouter.post('/users/login', login)
 
 userRouter.get('/users/:userName', getUser)
 
-userRouter.post('/users/userProfile', createUserProfile)
+userRouter.post('/users/userProfile', checkUserSession, createUserProfile)
 

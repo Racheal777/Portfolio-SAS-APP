@@ -13,7 +13,8 @@ export const createUserProfile = async (req, res) => {
         return res.status(400).send(error.details[0].message)
     }
 
-    const user = await User.findById(value.user)
+    const userSessionId = req.session.user.id
+    const user = await User.findById(userSessionId)
     if(!user){
         return res.status(404).send('User not found')
     }
