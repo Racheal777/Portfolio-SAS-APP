@@ -8,7 +8,7 @@ export const educationRouter = Router()
 
 educationRouter.post('/users/education', checkUserSession, addEducation)
 
-educationRouter.get('/users/education/:userId/:educationId', getAllUserEducation)
+educationRouter.get('/users/education', checkUserSession, getAllUserEducation)
 
 educationRouter.patch('/users/education/:id', checkUserSession, updateOneEducation)
 
