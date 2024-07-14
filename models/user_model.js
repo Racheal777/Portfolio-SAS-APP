@@ -17,6 +17,8 @@ const userSchema = new Schema({
     volunteering: [{ type: Types.ObjectId, ref: 'Volunteering' }],
     experiences: [{ type: Types.ObjectId, ref: 'Experiences' }],
 
+}, {
+    timestamps: true
 });
 
 export const User = model("User", userSchema);

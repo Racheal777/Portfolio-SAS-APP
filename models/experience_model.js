@@ -2,7 +2,7 @@ import { Schema, model, Types } from "mongoose";
 
 const experienceSchema = new Schema({
 
-  
+
     companyName: { type: String },
     role: { type: String },
     skills: { type: String },

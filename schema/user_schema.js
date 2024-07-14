@@ -52,15 +52,15 @@ export const educationSchema = joi.object({
         responsibility: joi.string().required(),
         location: joi.string().required(),
         startDate: joi.string().required(),
-        endDate: joi.string().required(),
-        user: joi.string().required()
+        endDate: joi.string(),
+        user: joi.string()
     })
 
 
 export const skillsSchema = joi.object({
     name: joi.string().required(),
     levelOfProficiency: joi.string().required(),
-    user: joi.string().required()
+    user: joi.string()
 })
 
 export const volunteeringSchema = joi.object({
@@ -72,19 +72,28 @@ export const volunteeringSchema = joi.object({
     role: joi.string().required(),
     responsibility: joi.string().required(),
     location: joi.string(),
-    projectName: joi.string().required(),
-    user: joi.string().required()
+    projectName: joi.string(),
+    user: joi.string()
 })
 
 export const projectSchema = joi.object({
-    image:joi.string().required(),
+    image:joi.string(),
     projectName: joi.string().required(),
     description: joi.string().required(),
-    contributors: joi.string().required(),
+    contributors: joi.string(),
     skills: joi.string().required(),
     link: joi.string().required(),
-    nameOfInstitution: joi.string().required(),
+    nameOfInstitution: joi.string(),
     startDate: joi.string().required(),
     endDate: joi.string(),
-    user:joi.string().required()
+    user:joi.string()
 })
+
+export const achievementSchema = joi.object({
+    awards: joi.string(),
+    description: joi.string().required(),
+    image: joi.string().optional(),
+    date: joi.string().required(),
+    nameOfInstitution: joi.string().required(),
+    user: joi.string(), 
+});

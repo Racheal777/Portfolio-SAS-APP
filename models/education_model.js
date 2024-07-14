@@ -10,6 +10,7 @@ const educationSchema = new Schema({
   startDate: { type: String },
   endDate: { type: String },
   user: {type: Types.ObjectId, ref: 'User'} 
+}, {
+  timestamps: true
 });
-
 export const Education = model("Education", educationSchema);

@@ -6,6 +6,11 @@ import { educationRouter } from './routes/education_route.js'
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
 import 'dotenv/config'
+import { projectRouter } from './routes/project_route.js'
+import { ExperienceRouter } from './routes/experience_route.js'
+import { achievementRouter } from './routes/achievement_route.js'
+import { skillRouter } from './routes/skills_route.js'
+import { volunteeringRouter } from './routes/volunteering_route.js'
 
 const app = express()
 
@@ -28,6 +33,11 @@ app.use(session({
 
 app.use('/api/v1', userRouter)
 app.use('/api/v1', educationRouter)
+app.use('/api/v1', projectRouter)
+app.use('/api/v1', ExperienceRouter)
+app.use('/api/v1', achievementRouter)
+app.use('/api/v1', skillRouter)
+app.use('/api/v1', volunteeringRouter)
 
 dbConnection()
 

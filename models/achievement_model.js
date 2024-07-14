@@ -10,7 +10,7 @@ const achievementSchema = new Schema({
 
  
 
-  
+}, {
+  timestamps: true
 });
-
 export const Achievement= model("Achievement", achievementSchema);
