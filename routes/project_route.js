@@ -8,13 +8,13 @@ import { remoteUpload } from "../middlewares/uploads.js";
 
 export const projectRouter = Router()
 
-projectRouter.post('/users/project', remoteUpload.single('image'), checkUserSession, createUserProject)
+projectRouter.post('/users/projects', remoteUpload.single('image'), checkUserSession, createUserProject)
 
-projectRouter.get('/users/project', checkUserSession, getAllUserProjects)
+projectRouter.get('/users/projects', checkUserSession, getAllUserProjects)
 
-projectRouter.patch('/users/project/:id', remoteUpload.single('image'), checkUserSession, updateUserProject)
+projectRouter.patch('/users/projects/:id', remoteUpload.single('image'), checkUserSession, updateUserProject)
 
-projectRouter.delete('/users/project/:id',  checkUserSession, deleteUserProject)
+projectRouter.delete('/users/projects/:id',  checkUserSession, deleteUserProject)
 
 
 

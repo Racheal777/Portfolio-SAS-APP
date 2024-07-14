@@ -12,8 +12,18 @@ import { skillRouter } from "./routes/skills_route.js";
 import { volunteeringRouter } from "./routes/volunteering_route.js";
 import cors from "cors";
 import { restartServer } from "./restart_server.js";
+import expressOasGenerator from '@mickeymond/express-oas-generator'
+import mongoose from "mongoose";
 
 const app = express();
+
+expressOasGenerator.handleResponses(app, {
+    alwaysServeDocs: true,
+    tags: ['auth','userProfile', 'skills', 'projects', 'volunteering', 'experiences', 'education', 'achievements'],
+    mongooseModels: mongoose.modelNames()
+    
+    
+})
 
 const PORT = process.env.PORT || 8080;
 app.use(express.json());
@@ -43,6 +53,8 @@ app.use("/api/v1", achievementRouter);
 app.use("/api/v1", skillRouter);
 app.use("/api/v1", volunteeringRouter);
 
+expressOasGenerator.handleRequests();
+app.use((req, res) => res.redirect('/api-docs/'));
 
 const reboot = async () => {
 setInterval(restartServer, process.env.INTERVAL)

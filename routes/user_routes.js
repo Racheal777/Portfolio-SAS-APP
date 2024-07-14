@@ -8,11 +8,11 @@ export const userRouter = Router();
 
 userRouter.get("/users", getUsers);
 
-userRouter.post("/users/signup", signup);
+userRouter.post("/users/auth/signup", signup);
 
-userRouter.post("/users/login", login);
+userRouter.post("/users/auth/login", login);
 
-userRouter.get("/users/:userName", getUser);
+userRouter.get("/users/auth/:userName", getUser);
 
 userRouter.post(
   "/users/userProfile",

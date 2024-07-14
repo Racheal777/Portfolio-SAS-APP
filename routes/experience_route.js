@@ -7,11 +7,11 @@ import { Router } from "express";
 
 export const ExperienceRouter = Router()
 
-ExperienceRouter.post('/users/experience', checkUserSession, createUserExperience)
+ExperienceRouter.post('/users/experiences', checkUserSession, createUserExperience)
 
-ExperienceRouter.get('/users/experience', checkUserSession, getAllUserExperience)
+ExperienceRouter.get('/users/experiences', checkUserSession, getAllUserExperience)
 
-ExperienceRouter.patch('/users/experience/:id', checkUserSession, updateUserExperience)
+ExperienceRouter.patch('/users/experiences/:id', checkUserSession, updateUserExperience)
 
 
-ExperienceRouter.delete('/users/experience/:id', checkUserSession, deleteUserExperience)
+ExperienceRouter.delete('/users/experiences/:id', checkUserSession, deleteUserExperience)

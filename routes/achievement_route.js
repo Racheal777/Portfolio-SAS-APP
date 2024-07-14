@@ -6,11 +6,11 @@ import { Router } from "express";
 
 export const achievementRouter = Router()
 
-achievementRouter.post('/users/achievement', checkUserSession, createUserAchievement)
+achievementRouter.post('/users/achievements', checkUserSession, createUserAchievement)
 
-achievementRouter.get('/users/achievement', checkUserSession, getAllUserAchievements)
+achievementRouter.get('/users/achievements', checkUserSession, getAllUserAchievements)
 
-achievementRouter.patch('/users/achievement/:id', checkUserSession, updateUserAchievement)
+achievementRouter.patch('/users/achievements/:id', checkUserSession, updateUserAchievement)
 
-achievementRouter.delete('/users/achievement/:id', checkUserSession, deleteUserAchievement)
+achievementRouter.delete('/users/achievements/:id', checkUserSession, deleteUserAchievement)
 
