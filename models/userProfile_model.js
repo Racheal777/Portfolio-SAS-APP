@@ -1,8 +1,6 @@
 import { Schema, model, Types } from "mongoose";
 
 const userProfileSchema = new Schema({
-
- 
     profilePicture: { type: String },
     location: { type: String },
     maritalStatus: {
@@ -19,11 +17,9 @@ const userProfileSchema = new Schema({
     githubLink: { type: String },
     linkedinLink: { type: String },
     twitterLink: { type: String },
-    user: {type: Types.ObjectId, ref: 'User'}
-
- 
-
-  
+    user: {type: Types.ObjectId, ref: 'User'} 
 });
+
+
 
 export const UserProfile = model("UserProfile", userProfileSchema);

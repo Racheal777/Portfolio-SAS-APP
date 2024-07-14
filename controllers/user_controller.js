@@ -18,7 +18,7 @@ export const signup = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(value.password, 12)
          value.password = hashedPassword
-         
+
         const addUser =  await User.create(value)
 
         req.session.user = { id: addUser.id }
@@ -67,12 +67,42 @@ export const getUser = async (req, res) => {
     //use the select to exclude the password
     //use populate to populate the education
     const userDetails = await User.find({userName})
-    .select('-password')
     .populate('education')
     .populate('userProfile')
     
        
-    return res.status(201).json({user: userDetails})
+    return res.status(200).json({user: userDetails})
     
 }
 
+
+export const getUsers = async (req, res) => {
+
+
+     const { email, userName } = req.query;
+
+     const filter = {};
+     if (email) {
+         filter.email = email;
+     }
+     if (userName) {
+         filter.userName = userName;
+     }
+
+     const users = await User.find(filter);
+     
+    return res.status(200).json({users})
+    
+}
+
+
+export const logout = async (req, res, next) => {
+    try {
+       // Destroy user session
+       await req.session.destroy();
+       // Return response
+       res.status(200).json('User logged out')
+    } catch (error) {
+       next(error)
+    }
+ }

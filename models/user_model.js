@@ -6,7 +6,7 @@ const userSchema = new Schema({
     lastName: { type: String },
     otherNames: { type: String },
     email: { type: String, unique: true },
-    password: { type: String },
+    password: { type: String , select:false},
     userName: { type: String, unique:true },
     termsAndConditions: { type: Boolean },
     education: [{ type: Types.ObjectId, ref: 'Education' }],
