@@ -65,3 +65,19 @@ export const updateUserProfile = async (req, res) => {
     }
   };
   
+
+
+
+  export const getUserProfile = async (req, res) => {
+    try {
+    
+      const userSessionId = req.session.user.id
+      const profile = await UserProfile.find({ user: userSessionId });
+      if (!profile) {
+        return res.status(404).send("No profile added");
+      }
+      res.status(200).json({ profile});
+    } catch (error) {
+      return res.status(500).json({error})
+    }
+  };

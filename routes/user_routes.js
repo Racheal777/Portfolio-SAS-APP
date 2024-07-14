@@ -1,6 +1,6 @@
 import { getUser, getUsers, login, signup } from "../controllers/user_controller.js";
 import { Router } from "express";
-import { createUserProfile, updateUserProfile } from "../controllers/userProfile_controller.js";
+import { createUserProfile, getUserProfile, updateUserProfile } from "../controllers/userProfile_controller.js";
 import { checkUserSession } from "../middlewares/auth.js";
 import { remoteUpload } from "../middlewares/uploads.js";
 
@@ -13,6 +13,9 @@ userRouter.post("/users/auth/signup", signup);
 userRouter.post("/users/auth/login", login);
 
 userRouter.get("/users/auth/:userName", getUser);
+
+
+userRouter.get( "/users/userProfile", getUserProfile);
 
 userRouter.post(
   "/users/userProfile",
