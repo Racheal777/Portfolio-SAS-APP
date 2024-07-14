@@ -1,47 +1,63 @@
+import express from "express";
+import { dbConnection } from "./config/db.js";
+import { userRouter } from "./routes/user_routes.js";
+import { educationRouter } from "./routes/education_route.js";
+import session from "express-session";
+import MongoStore from "connect-mongo";
+import "dotenv/config";
+import { projectRouter } from "./routes/project_route.js";
+import { ExperienceRouter } from "./routes/experience_route.js";
+import { achievementRouter } from "./routes/achievement_route.js";
+import { skillRouter } from "./routes/skills_route.js";
+import { volunteeringRouter } from "./routes/volunteering_route.js";
+import cors from "cors";
+import { restartServer } from "./restart_server.js";
 
-import express from 'express'
-import { dbConnection } from './config/db.js'
-import { userRouter } from './routes/user_routes.js'
-import { educationRouter } from './routes/education_route.js'
-import session from 'express-session'
-import MongoStore from 'connect-mongo'
-import 'dotenv/config'
-import { projectRouter } from './routes/project_route.js'
-import { ExperienceRouter } from './routes/experience_route.js'
-import { achievementRouter } from './routes/achievement_route.js'
-import { skillRouter } from './routes/skills_route.js'
-import { volunteeringRouter } from './routes/volunteering_route.js'
+const app = express();
 
-const app = express()
+const PORT = process.env.PORT || 8080;
+app.use(express.json());
+app.use(cors());
 
-
-
-const PORT = 7080
-app.use(express.json())
-
-app.use(session({
+app.use(
+  session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     // Store session
     store: MongoStore.create({
-        mongoUrl: process.env.connectionString
-    })
-})); 
+      mongoUrl: process.env.connectionString,
+    }),
+  })
+);
+
+app.get("/api/v1/health", (req, res) => {
+  res.json({ status: "UP" });
+});
+
+app.use("/api/v1", userRouter);
+app.use("/api/v1", educationRouter);
+app.use("/api/v1", projectRouter);
+app.use("/api/v1", ExperienceRouter);
+app.use("/api/v1", achievementRouter);
+app.use("/api/v1", skillRouter);
+app.use("/api/v1", volunteeringRouter);
 
 
-
-app.use('/api/v1', userRouter)
-app.use('/api/v1', educationRouter)
-app.use('/api/v1', projectRouter)
-app.use('/api/v1', ExperienceRouter)
-app.use('/api/v1', achievementRouter)
-app.use('/api/v1', skillRouter)
-app.use('/api/v1', volunteeringRouter)
+const reboot = async () => {
+setInterval(restartServer, process.env.INTERVAL)
+}
 
 dbConnection()
-
-app.listen(PORT, ()=>{
-    console.log(`Server is connected to Port ${PORT}`)
-})
-
+  .then(() => {
+    app.listen(PORT, () => {
+        reboot().then(() => {
+        console.log(`Server Restarted`);
+      });
+      console.log(`Server is connected to Port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+    process.exit(-1);
+  });
