@@ -88,8 +88,8 @@ export const getUser = async (req, res, next) => {
 export const getUsers = async (req, res) => {
  
 
-  const email = req.query.email.toLowerCase()
-  const userName = req.query.userName.toLowerCase();
+  const email = req.query.email?.toLowerCase()
+  const userName = req.query.userName?.toLowerCase();
 
   const filter = {};
   if (email) {

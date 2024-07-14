@@ -20,9 +20,7 @@ const app = express();
 expressOasGenerator.handleResponses(app, {
     alwaysServeDocs: true,
     tags: ['auth','userProfile', 'skills', 'projects', 'volunteering', 'experiences', 'education', 'achievements'],
-    mongooseModels: mongoose.modelNames()
-    
-    
+    mongooseModels: mongoose.modelNames(), 
 })
 
 const PORT = process.env.PORT || 8080;
