@@ -1,58 +1,129 @@
 {
-    "user": {
-      "_id": "668fe9282896a1435c306fe5",
+  "user": [
+    {
+      "_id": "6694015c02c1bb4c5d418a75",
       "firstName": "Racheal",
       "lastName": "Kuranchie",
       "email": "Kuranchieracheal@gmail.com",
+      "userName": "RachealKuranchie",
       "termsAndConditions": true,
-      "__v": 3,
       "education": [
         {
-          "_id": "668ff67549c113511a3a96fc",
-          "schoolName": "University of Whales",
-          "location": "123 Main St, Cityville",
+          "_id": "669421b6dc1a447b039138e3",
+          "schoolName": "York University",
+          "location": "New York, NY",
           "program": "Computer Science",
           "qualification": "Bachelor's Degree",
-          "grade": "Distinction",
-          "startDate": "2022-09-09",
-          "user": "668fe9282896a1435c306fe5",
+          "grade": "First Class",
+          "startDate": "2016-09-01",
+          "endDate": "2020-06-30",
+          "user": "6694015c02c1bb4c5d418a75",
+          "createdAt": "2024-07-14T19:06:30.063Z",
+          "updatedAt": "2024-07-14T19:06:30.063Z",
           "__v": 0
-        },
+        }
+      ],
+      "skills": [
         {
-          "_id": "668ff6b249c113511a3a9700",
-          "schoolName": "University of Cincinati",
-          "location": "123 Main St, Cityville",
-          "program": "Computer Science",
-          "qualification": "Bachelor's Degree",
-          "grade": "Distinction",
-          "startDate": "2022-09-09",
-          "user": "668fe9282896a1435c306fe5",
+          "_id": "66941cdd76d0ea11ec724b7e",
+          "name": "React",
+          "levelOfProficiency": "beginner",
+          "user": "6694015c02c1bb4c5d418a75",
+          "createdAt": "2024-07-14T18:45:49.081Z",
+          "updatedAt": "2024-07-14T18:45:49.081Z",
           "__v": 0
         }
       ],
       "achievements": [],
-      "experiences": [],
-      "projects": [],
-      "skills": [],
+      "projects": [
+        {
+          "_id": "6694212c449b4f660902148c",
+          "image": "secure/uploads/14370",
+          "projectName": "Project ABC",
+          "description": " Developed a new mobile application for social networking. ",
+          "contributors": " John Doe, Jane Smith",
+          "skills": "Mobile App Development, UI/UX Design",
+          "link": "https://example.com/projectabc",
+          "nameOfInstitution": "Example Inc.",
+          "startDate": "2020-01-01",
+          "endDate": "2024-12-31",
+          "user": "6694015c02c1bb4c5d418a75",
+          "createdAt": "2024-07-14T19:04:12.844Z",
+          "updatedAt": "2024-07-14T19:04:12.844Z",
+          "__v": 0
+        },
+        {
+          "_id": "669420de449b4f6609021488",
+          "image": "secure/uploads/14369",
+          "projectName": "Project ABC",
+          "description": " \"Developed a new mobile application for social networking.\" ",
+          "contributors": " \"John Doe, Jane Smith\"",
+          "skills": "\"Mobile App Development, UI/UX Design\"",
+          "link": "\"https://example.com/projectabc\"  ",
+          "nameOfInstitution": "\"Example Inc.\",",
+          "startDate": "\"2020-01-01\"  ",
+          "endDate": "\"2021-12-31\", ",
+          "user": "6694015c02c1bb4c5d418a75",
+          "createdAt": "2024-07-14T19:02:54.673Z",
+          "updatedAt": "2024-07-14T19:02:54.673Z",
+          "__v": 0
+        }
+      ],
+      "volunteering": [
+        {
+          "_id": "66941e64449b4f6609021484",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "skills": "Project Management, Team Leadership, Communication",
+          "startDate": "2020-01-01",
+          "endDate": "2021-12-31",
+          "role": "Project Manager",
+          "responsibility": "Led a team of developers and designers to deliver a new web application.",
+          "location": "San Francisco, CA",
+          "projectName": "Project X",
+          "user": "6694015c02c1bb4c5d418a75",
+          "createdAt": "2024-07-14T18:52:20.955Z",
+          "updatedAt": "2024-07-14T18:52:20.955Z",
+          "__v": 0
+        }
+      ],
+      "experiences": [
+        {
+          "_id": "66941dc8449b4f660902147c",
+          "companyName": "Example Company",
+          "role": "Software Engineer",
+          "skills": "JavaScript, React, Node.js",
+          "responsibility": "Developed front-end and back-end applications.",
+          "location": "New York, NY",
+          "startDate": "2020-01-01",
+          "endDate": "2022-06-30",
+          "user": "6694015c02c1bb4c5d418a75",
+          "__v": 0
+        },
+        {
+          "_id": "66941e04449b4f6609021480",
+          "companyName": "Google",
+          "role": "Software Engineer",
+          "skills": "TypeScript, JavaScript, React, Node.js",
+          "responsibility": "Developed front-end and back-end applications.",
+          "location": "New York, NY",
+          "startDate": "2024-01-01",
+          "user": "6694015c02c1bb4c5d418a75",
+          "__v": 0
+        }
+      ],
+      "__v": 7,
       "userProfile": {
-        "_id": "66914606866aab1589fc08a2",
-        "profilePicture": "https://example.com/images/profile.jpg",
-        "location": "New York, USA",
-        "maritalStatus": "single",
-        "sex": "male",
-        "bio": "Passionate software developer with 5 years of experience in web development.",
-        "about": "I specialize in building full-stack web applications using modern technologies. I love learning new programming languages and frameworks.",
-        "dateOfBirth": "1990-05-15T00:00:00.000Z",
-        "contact": "+1234567890",
-        "resume": "https://example.com/resume.pdf",
-        "languages": [
-          "English",
-          "Spanish",
-          "French"
-        ],
-        "user": "668fe9282896a1435c306fe5",
+        "_id": "669401b402c1bb4c5d418a78",
+        "profilePicture": "secure/uploads/14335",
+        "location": "Kumasi",
+        "sex": "female",
+        "bio": "I am rich",
+        "resume": "secure/uploads/14334",
+        "languages": [],
+        "user": "6694015c02c1bb4c5d418a75",
         "__v": 0
       },
-      "volunteering": []
+      "updatedAt": "2024-07-14T19:06:30.306Z"
     }
-  }
+  ]
+}

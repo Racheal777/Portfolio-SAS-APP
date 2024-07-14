@@ -25,7 +25,7 @@ export const createUserProject = async (req, res) => {
 
     await user.save();
 
-    res.status(201).json({ Project });
+    res.status(201).json({ project });
   } catch (error) {
     console.log(error);
   }

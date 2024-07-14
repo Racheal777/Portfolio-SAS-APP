@@ -8,8 +8,8 @@ const educationSchema = new Schema({
   qualification: { type: String },
   grade: { type: String },
   startDate: { type: String },
-  endDate: { type: String },
-  user: {type: Types.ObjectId, ref: 'User'} 
+  endDate: { type: String},
+  user: {type: Types.ObjectId, ref: 'User', select:false} 
 }, {
   timestamps: true
 });

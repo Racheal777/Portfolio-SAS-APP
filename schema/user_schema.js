@@ -59,7 +59,7 @@ export const educationSchema = joi.object({
 
 export const skillsSchema = joi.object({
     name: joi.string().required(),
-    levelOfProficiency: joi.string().required(),
+    levelOfProficiency: joi.string().valid('beginner', 'advanced', 'expert'),
     user: joi.string()
 })
 

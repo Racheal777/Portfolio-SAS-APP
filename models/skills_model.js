@@ -8,13 +8,12 @@ const skillSchema = new Schema({
     },
     levelOfProficiency: {
         type: String,
-        required: true,
+        enum:['beginner', 'advanced', 'expert']
     },
-    user: {type: Types.ObjectId, ref: 'User'}
+    user: {type: Types.ObjectId, ref: 'User', select:false}
 }, {
     timestamps: true
 });
-
 
 export const Skill = model('Skill', skillSchema);
 
