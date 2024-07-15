@@ -33,9 +33,6 @@ export const login = async (req, res, next) => {
       $or: [{ email }, { userName }],
     });
 
-    console.log(userName, password, email, user)
-   
-
     if (!user) {
       return res.status(401).json("User does not exist");
     }else {
