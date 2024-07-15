@@ -20,7 +20,7 @@ export const signup = async (req, res) => {
 
     req.session.user = { id: addUser.id };
 
-    return res.status(201).send(addUser);
+    return res.status(201).json({'message': "Registration successful"});
   }
 };
 
