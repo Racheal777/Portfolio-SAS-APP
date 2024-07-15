@@ -18,7 +18,7 @@ userRouter.post("/users/auth/signup", signup);
 userRouter.get("/users/auth/:userName", getUser);
 
 
-userRouter.get( "/users/userProfile", getUserProfile);
+userRouter.get( "/users/userProfile", checkUserSession, getUserProfile);
 
 userRouter.post(
   "/users/userProfile",
