@@ -32,11 +32,14 @@ export const login = async (req, res, next) => {
     const user = await User.findOne({
       $or: [{ email }, { userName }],
     });
+
+    console.log(userName, password, email, user)
+   
+
     if (!user) {
       return res.status(401).json("User does not exist");
-    }
-    // Verify user password
-    const correctPass = bcrypt.compareSync(password, user.password);
+    }else {
+        const correctPass = await bcrypt.compare(password, user.password);
     if (!correctPass) {
       return res.status(401).json("Invalid login details");
     }
@@ -44,7 +47,11 @@ export const login = async (req, res, next) => {
     req.session.user = { id: user.id };
 
     res.status(201).json("Login successful");
+    }
+    // Verify user password
+    
   } catch (error) {
+    console.log(error)
     next(error);
   }
 };
@@ -54,7 +61,7 @@ export const getUser = async (req, res, next) => {
     const userName = req.params.userName.toLowerCase();
 
   const options = { sort: { startDate: -1 } }
-  const userDetails = await User.findOne({ userName })
+  const userDetails = await User.findOne({ userName }).select("-password")
     .populate({
       path: "education",
       options,
