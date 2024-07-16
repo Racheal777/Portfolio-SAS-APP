@@ -11,15 +11,14 @@ export const createUserExperience = async (req, res) => {
       return res.status(400).send(error.details[0].message);
     }
 
-    const userSessionId = req.session.user.id;
-   
+    const userId = req.session?.user?.id || req?.user.id;
 
-    const user = await User.findById(userSessionId);
+    const user = await User.findById(userId);
     if (!user) {
       return res.status(404).send("User not found");
     }
 
-    const experience = await Experience.create({ ...value, user: userSessionId });
+    const experience = await Experience.create({ ...value, user: userId });
 
     user.experiences.push(experience._id)
 
@@ -36,8 +35,8 @@ export const createUserExperience = async (req, res) => {
 export const getAllUserExperience = async (req, res) => {
   try {
     //we are fetching Experience that belongs to a particular user
-    const userSessionId = req.session.user.id
-    const allExperience = await Experience.find({ user: userSessionId });
+    const userId = req.session?.user?.id || req?.user.id;
+    const allExperience = await Experience.find({ user: userId });
     if (allExperience.length == 0) {
       return res.status(404).send("No Experience added");
     }
@@ -57,8 +56,8 @@ export const updateUserExperience = async (req, res) => {
         return res.status(400).send(error.details[0].message);
       }
   
-      const userSessionId = req.session.user.id; 
-      const user = await User.findById(userSessionId);
+      const userId = req.session?.user?.id || req?.user.id;
+      const user = await User.findById(userId);
       if (!user) {
         return res.status(404).send("User not found");
       }
@@ -79,8 +78,8 @@ export const updateUserExperience = async (req, res) => {
     try {
      
   
-      const userSessionId = req.session.user.id; 
-      const user = await User.findById(userSessionId);
+      const userId = req.session?.user?.id || req?.user.id;
+      const user = await User.findById(userId);
       if (!user) {
         return res.status(404).send("User not found");
       }

@@ -1,6 +1,8 @@
 import { User } from "../models/user_model.js";
 import { userSchema } from "../schema/user_schema.js";
 import bcrypt from "bcrypt";
+import jwt  from 'jsonwebtoken'
+
 
 export const signup = async (req, res) => {
   const { error, value } = userSchema.validate(req.body);
@@ -16,11 +18,9 @@ export const signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(value.password, 12);
     value.password = hashedPassword;
 
-    const addUser = await User.create(value);
+     await User.create(value);
 
-    req.session.user = { id: addUser.id };
-
-    return res.status(201).json({'message': "Registration successful"});
+    return res.status(201).json({message: "Registration successful"});
   }
 };
 
@@ -40,10 +40,14 @@ export const login = async (req, res, next) => {
     if (!correctPass) {
       return res.status(401).json("Invalid login details");
     }
+
     // Generate a session for the user
     req.session.user = { id: user.id };
 
-    res.status(201).json("Login successful");
+    res.status(201).json({
+        message: "Login successful",
+       
+    });
     }
     // Verify user password
     
@@ -53,6 +57,43 @@ export const login = async (req, res, next) => {
   }
 };
 
+
+
+export const token= async (req, res, next) => {
+    try {
+      const { userName, email, password } = req.body;
+      //  Find a user using their email or username
+      const user = await User.findOne({
+        $or: [{ email }, { userName }],
+      });
+  
+      if (!user) {
+        return res.status(401).json("User does not exist");
+      }else {
+          const correctPass = await bcrypt.compare(password, user.password);
+      if (!correctPass) {
+        return res.status(401).json("Invalid login details");
+      }
+  
+   
+      const token = jwt.sign({id: user.id}, process.env.JWT_PRIVATE_KEY, {expiresIn: '1hr'})
+      // Generate a session for the user
+     
+  
+      res.status(201).json({
+          message: "User logged in",
+          accessToken: token
+  
+      });
+      }
+      // Verify user password
+      
+    } catch (error) {
+      console.log(error)
+      next(error);
+    }
+  };
+  
 export const getUser = async (req, res, next) => {
   try {
     const userName = req.params.userName.toLowerCase();

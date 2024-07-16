@@ -15,14 +15,14 @@ export const createUserAchievement = async (req, res) => {
       return res.status(400).send(error.details[0].message);
     }
 
-    const userSessionId = req.session.user.id;
+    const userId = req.session?.user?.id || req?.user.id;
    
-    const user = await User.findById(userSessionId);
+    const user = await User.findById(userId);
     if (!user) {
       return res.status(404).send("User not found");
     }
 
-    const achievement = await Achievement.create({ ...value, user: userSessionId });
+    const achievement = await Achievement.create({ ...value, user: userId });
 
     user.achievements.push(achievement._id)
 
@@ -39,8 +39,8 @@ export const createUserAchievement = async (req, res) => {
 export const getAllUserAchievements = async (req, res) => {
   try {
     //we are fetching Achievement that belongs to a particular user
-    const userSessionId = req.session.user.id
-    const allAchievement = await Achievement.find({ user: userSessionId });
+    const userId = req.session?.user?.id || req?.user.id;
+    const allAchievement = await Achievement.find({ user: userId });
     if (allAchievement.length == 0) {
       return res.status(404).send("No Achievement added");
     }
@@ -63,9 +63,8 @@ export const updateUserAchievement = async (req, res) => {
       if (error) {
         return res.status(400).send(error.details[0].message);
       }
-  
-      const userSessionId = req.session.user.id; 
-      const user = await User.findById(userSessionId);
+      const userId = req.session?.user?.id || req?.user.id;
+      const user = await User.findById(userId);
       if (!user) {
         return res.status(404).send("User not found");
       }
@@ -86,8 +85,8 @@ export const updateUserAchievement = async (req, res) => {
     try {
      
   
-      const userSessionId = req.session.user.id; 
-      const user = await User.findById(userSessionId);
+      const userId = req.session?.user?.id || req?.user.id;
+      const user = await User.findById(userId);
       if (!user) {
         return res.status(404).send("User not found");
       }
