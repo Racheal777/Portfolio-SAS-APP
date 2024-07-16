@@ -9,8 +9,7 @@ export const createUserAchievement = async (req, res) => {
   try {
     const { error, value } = achievementSchema.validate({  
       ...req.body,
-      award: req.files.award[0].filename,
-      image: req.files.image[0].filename,});
+      image: req.file.filename});
 
     if (error) {
       return res.status(400).send(error.details[0].message);
@@ -57,8 +56,8 @@ export const updateUserAchievement = async (req, res) => {
     try {
       const { error, value } = achievementSchema.validate({  
         ...req.body,
-        award: req.files.award[0].filename,
-        image: req.files.image[0].filename,});
+       
+        image: req.file.filename});
 
   
       if (error) {
