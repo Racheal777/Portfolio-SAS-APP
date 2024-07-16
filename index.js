@@ -2,8 +2,8 @@ import express from "express";
 import { dbConnection } from "./config/db.js";
 import { userRouter } from "./routes/user_routes.js";
 import { educationRouter } from "./routes/education_route.js";
-import session from "express-session";
-import MongoStore from "connect-mongo";
+// import session from "express-session";
+// import MongoStore from "connect-mongo";
 import "dotenv/config";
 import { projectRouter } from "./routes/project_route.js";
 import { ExperienceRouter } from "./routes/experience_route.js";
@@ -27,17 +27,17 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json());
 app.use(cors({credentials: true, origin: 'http://localhost:5173'}));
 
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    // Store session
-    store: MongoStore.create({
-      mongoUrl: process.env.connectionString,
-    }),
-  })
-);
+// app.use(
+//   session({
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: true,
+//     // Store session
+//     store: MongoStore.create({
+//       mongoUrl: process.env.connectionString,
+//     }),
+//   })
+// );
 
 app.get("/api/v1/health", (req, res) => {
   res.json({ status: "UP" });
