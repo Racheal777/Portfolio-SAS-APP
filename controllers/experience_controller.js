@@ -1,4 +1,4 @@
-import { UserProfile } from "../models/userProfile_model.js";
+
 import { experienceSchema, userProfileSchema } from "../schema/user_schema.js";
 import { User } from "../models/user_model.js";
 import { Experience } from "../models/experience_model.js";
@@ -50,7 +50,7 @@ export const getAllUserExperience = async (req, res) => {
 
 export const updateUserExperience = async (req, res) => {
     try {
-      const { error, value } = userProfileSchema.validate(req.body);
+      const { error, value } = experienceSchema.validate(req.body);
   
       if (error) {
         return res.status(400).send(error.details[0].message);
