@@ -12,6 +12,6 @@ export const checkUAuth = (req, res, next) => {
        }
     }
     else {
-        res.status(401).json('No user session')
+        res.status(401).json({error:'Not authenticated'})
     }
 }
