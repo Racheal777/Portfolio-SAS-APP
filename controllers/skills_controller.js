@@ -40,7 +40,7 @@ export const getAllUserSkills = async (req, res) => {
     const userId = req.session?.user?.id || req?.user.id;
     const allSkill = await Skill.find({ user: userId });
     if (allSkill.length == 0) {
-      return res.status(404).send("No Skill added");
+      return res.status(200).send("No Skill added");
     }
     res.status(200).json({ Skills: allSkill });
   } catch (error) {

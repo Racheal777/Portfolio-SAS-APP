@@ -38,7 +38,7 @@ export const getAllUserExperience = async (req, res) => {
     const userId = req.session?.user?.id || req?.user.id;
     const allExperience = await Experience.find({ user: userId });
     if (allExperience.length == 0) {
-      return res.status(404).send("No Experience added");
+      return res.status(200).send("No Experience added");
     }
     res.status(200).json({ Experience: allExperience });
   } catch (error) {
