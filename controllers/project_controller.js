@@ -39,7 +39,7 @@ export const getAllUserProjects = async (req, res) => {
     const userId = req.session?.user?.id || req?.user.id;
     const allProject = await Project.find({ user: userId });
     if (allProject.length == 0) {
-      return res.status(200).send("No Project added");
+      return res.status(200).json({projects: allProject});
     }
     res.status(200).json({ Projects: allProject });
   } catch (error) {
@@ -66,7 +66,7 @@ export const updateUserProject = async (req, res) => {
   
       const project = await Project.findByIdAndUpdate(req.params.id, value, { new: true });
         if (!project) {
-            return res.status(404).send("Project not found");
+            return res.status(404).json({ Projects: project });
         }
   
       res.status(200).json({ project });

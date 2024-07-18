@@ -44,7 +44,7 @@ export const getAllUserEducation = async (req, res) => {
     const userId = req.session?.user?.id || req?.user.id;
     const alleducation = await Education.find({ user: userId });
     if (alleducation.length == 0) {
-      return res.status(200).send("No education added");
+      return res.status(200).json({ education: alleducation });
     }
     res.status(200).json({ education: alleducation });
   } catch (error) {}
@@ -66,7 +66,7 @@ export const updateUserEducation = async (req, res) => {
   
       const Education = await Education.findByIdAndUpdate(req.params.id, value, { new: true });
         if (!Education) {
-            return res.status(404).send("Education not found");
+            return res.status(404).json({ education: Education });
         }
   
       res.status(201).json({ Education });

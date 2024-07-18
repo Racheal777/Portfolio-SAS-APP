@@ -1,8 +1,8 @@
-import { UserProfile } from "../models/userProfile_model.js";
+
 import { projectSchema, volunteeringSchema } from "../schema/user_schema.js";
 import { User } from "../models/user_model.js";
 
-import { Project } from "../models/project_model.js";
+
 import { Volunteering } from "../models/volunteering_model.js";
 
 export const createUserVolunteering = async (req, res) => {
@@ -41,7 +41,7 @@ export const getAllUserVolunteerings = async (req, res) => {
     const userId = req.session?.user?.id || req?.user.id;
     const allVolunteering = await Volunteering.find({ user: userId });
     if (allVolunteering.length == 0) {
-      return res.status(200).send("No Volunteering added");
+      return res.status(200).json({ Volunteerings: allVolunteering });
     }
     res.status(200).json({ Volunteerings: allVolunteering });
   } catch (error) {
@@ -69,10 +69,10 @@ export const updateUserVolunteering = async (req, res) => {
       { new: true }
     );
     if (!volunteering) {
-      return res.status(404).send("Volunteering not found");
+      return res.status(404).json({Volunteerings: Volunteering });
     }
 
-    res.status(200).json({ Volunteering });
+    res.status(200).json({Volunteerings: volunteering });
   } catch (error) {
     return res.status(500).json({ error });
   }

@@ -75,7 +75,7 @@ export const updateUserProfile = async (req, res) => {
         console.log('use', userId)
       const profile = await UserProfile.findById(userId );
       if (!profile) {
-        return res.status(200).send("No profile added");
+        return res.status(200).json({ profile});
       }
       res.status(200).json({ profile});
     } catch (error) {
