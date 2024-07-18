@@ -13,7 +13,7 @@ export const createUserSkill = async (req, res) => {
       return res.status(400).send(error.details[0].message);
     }
 
-    const userId = req.session?.user?.id || req?.user.id;
+    const userId = req.session?.user?.id || req?.user?.id;
    
     const user = await User.findById(userId);
     if (!user) {
