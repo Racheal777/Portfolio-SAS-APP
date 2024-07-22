@@ -6,8 +6,8 @@ export const createUserProfile = async (req, res) => {
   try {
     const { error, value } = userProfileSchema.validate({
       ...req.body,
-      profilePicture: req.files.profilePicture[0].filename,
-      resume: req.files.resume[0].filename,
+      profilePicture: req.files?.profilePicture[0].filename,
+      resume: req.files?.resume[0].filename,
     });
 
     if (error) {
@@ -17,7 +17,7 @@ export const createUserProfile = async (req, res) => {
     const userId = req.session?.user?.id || req?.user.id;
    
 
-    const user = await User.findById(userSessionId);
+    const user = await User.findById(userId);
     if (!user) {
       return res.status(404).send("User not found");
     }
@@ -72,8 +72,11 @@ export const updateUserProfile = async (req, res) => {
     try {
     
         const userId = req.session?.user?.id || req?.user.id;
-        console.log('use', userId)
-      const profile = await UserProfile.findById(userId );
+     
+      const profile = await UserProfile.findOne({user: userId}).populate({ 
+        path: 'user', 
+        select: '-password' 
+    });
       if (!profile) {
         return res.status(200).json({ profile});
       }
