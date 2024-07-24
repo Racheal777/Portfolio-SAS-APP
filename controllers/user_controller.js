@@ -76,7 +76,7 @@ export const token= async (req, res, next) => {
       }
   
    
-      const token = jwt.sign({id: user.id}, process.env.JWT_PRIVATE_KEY, {expiresIn: '2hr'})
+      const token = jwt.sign({id: user.id}, process.env.JWT_PRIVATE_KEY, {expiresIn: '5hr'})
       // Generate a session for the user
      
   
