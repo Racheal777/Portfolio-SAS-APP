@@ -82,7 +82,12 @@ export const token= async (req, res, next) => {
   
       res.status(201).json({
           message: "User logged in",
-          accessToken: token
+          accessToken: token,
+          user: {
+            firstName:user.firstName,
+            userName: user.userName,
+            lastName: user.lastName
+          }
   
       });
       }

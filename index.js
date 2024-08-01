@@ -14,6 +14,8 @@ import cors from "cors";
 import { restartServer } from "./restart_server.js";
 import expressOasGenerator from '@mickeymond/express-oas-generator'
 import mongoose from "mongoose";
+import passport from "passport";
+import { authRouter } from "./routes/auth_route.js";
 
 const app = express();
 
@@ -25,24 +27,19 @@ expressOasGenerator.handleResponses(app, {
 
 const PORT = process.env.PORT || 8080;
 app.use(express.json());
-app.use(cors({credentials: true, origin: 'http://localhost:5173'}));
+app.use(cors({credentials: true, origin: '*'}));
 
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: true,
-//     // Store session
-//     store: MongoStore.create({
-//       mongoUrl: process.env.connectionString,
-//     }),
-//   })
-// );
+//passport
+app.use(passport.initialize())
+
+//usse google
+
 
 app.get("/api/v1/health", (req, res) => {
   res.json({ status: "UP" });
 });
 
+app.use( authRouter);
 app.use("/api/v1", userRouter);
 app.use("/api/v1", educationRouter);
 app.use("/api/v1", projectRouter);
